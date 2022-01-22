@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles/figuras.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Figuras geométricas | Curso Práctico de JavaScript en Platzi</title>
+  </head>
+  <body>
+    <header>
+      <h1>Figuras geométricas</h1>
+      <p>Este es el primer taller del curso práctico de JavaScript.</p>
+    </header>
+
+    <section class="card-container">
+      <div class="upper-card">
+        <img src="/assets/cubo.png" alt="cuadrado" />
+        <h2>Cuadrado</h2>
+      </div>
+
+      <div class="form-container">
+        <form action=" ">
+          <label for="InputCuadrado"
+            >Escribe el tamaño de los lados del cuadrado</label
+          >
+          <input id="InputCuadrado" type="number" />
+          <button type="button" onclick="calcularPerimetroCuadrado()">
+            Calcular perímetro
+          </button>
+          <button type="button" onclick="calcularAreaCuadrado()">
+            Calcular aréa
+          </button>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
