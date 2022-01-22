@@ -76,3 +76,7 @@ function calcularAreaCuadrado() {
   const perimetro = areaCuadrado(value);
   alert(perimetro);
 }
+
+function calcularAlturaIsoceles(){
+    return "xd";
+}
