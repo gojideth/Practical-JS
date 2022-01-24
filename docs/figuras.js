@@ -77,6 +77,31 @@ function calcularAreaCuadrado() {
   alert(perimetro);
 }
 
-function calcularAlturaIsoceles(){
-    return "xd";
+function calcularAlturaIsoceles() {
+  const ladoTrian1 = document.getElementById("InputTriangulo1").value;
+  const ladoTrian2 = document.getElementById("InputTriangulo2").value;
+  const ladoTrianBase = document.getElementById("InputTrianguloBase").value;
+  if (revisarIsoceles(ladoTrian1, ladoTrian2, ladoTrianBase)) {
+    var altura = Math.sqrt(
+      ladoTrian1 * ladoTrian1 - (ladoTrianBase * ladoTrianBase) / 4
+    );
+    alert(altura);
+  } else {
+    alert("Ups, deben haber solo dos lados iguales");
+  }
+}
+function obtenerAreaTriangulo() {
+  const base = document.getElementById("InputTrianguloBase").value;
+  const altura = calcularAlturaIsoceles();
+
+  const area = areaTriangulo(base, altura);
+  return area;
+}
+
+function revisarIsoceles(lado1, lado2, base) {
+  if (lado1 == lado2 && lado1 != base && lado2 != base) {
+    return true;
+  } else {
+    return false;
+  }
 }
