@@ -1,4 +1,4 @@
-# Javascript practico
+# Practical JS
 
 ...
 
