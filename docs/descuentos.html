@@ -64,10 +64,10 @@
       .section-container {
         display: flex;
         flex-direction: column;
-        border: 4px solid black;
+        border: 2px solid black;
         width: 100%;
         box-sizing: border-box;
-        height: 372px;
+        height: 320px;
         justify-content: space-evenly;
         align-items: center;
       }
@@ -77,8 +77,6 @@
         /* margin: 16px 0 16px 0; */
         margin: 0;
         font-size: var(--lg);
-        justify-self: flex-start;
-        box-sizing: border-box;
       }
 
       .section-container .form-input {
@@ -155,22 +153,42 @@
       .price-before {
         position: relative;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 104px 1fr 104px;
+        grid-template-rows: 1fr;
         width: 100%;
         height: 280px;
       }
 
       .price-before img {
-        width: 140px;
+        width: 186px;
         align-self: center;
+        justify-self: center;
+        border-radius: 8px;
+        object-fit: cover;
+        visibility: hidden;
       }
 
       .price-before p {
         font-size: var(--lg);
         text-align: center;
-        height: 24px;
-        white-space: nowrap;
+        height: auto;
+        margin: 0 0 16px 0;
+        /* width: 104px; */
       }
+
+      .price-before p:nth-child(1) {
+        color: gray;
+        align-self: center;
+        font-size: var(--lg);
+        text-decoration: line-through;
+      }
+      .price-before p:nth-child(2){
+        color: tomato;
+        font-size: var(--lg);
+
+      }
+
+      
     </style>
   </head>
   <body>
@@ -192,30 +210,36 @@
           </form>
 
           <div class="cupon-container">
-            <form action="/">
+            <form action="">
               <label for="cars">Escoje un cupón</label>
               <select name="cupons" id="cupons">
-                <option value="none">No coupon</option>
-                <option value="tarupidren">Tarupidren</option>
-                <option value="nitram">Nitram</option>
-                <option value="memi">Memi</option>
-                <option value="gabs">Gabs</option>
+                <option value="0">No coupon</option>
+                <option value="10">Tarupidren</option>
+                <option value="20">Nitram</option>
+                <option value="30">Memi</option>
+                <option value="40">Gabs</option>
               </select>
             </form>
           </div>
-          <button type="button" onclick="onClickButtonPriceDiscount()">
+          <button
+            type="button"
+            onclick="writePrices(onClickButtonPriceDiscount())"
+          >
             Calcula el precio con descuento
           </button>
         </div>
         <div class="product-card">
           <div class="price-before">
-            <p>Viejofdfdfdfdfdfdf
-            </p>
+            <!-- <div class="p-before">
+            </div> -->
+            <p id="price-before"></p>
             <img
               src="https://images.pexels.com/photos/9410230/pexels-photo-9410230.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
               alt="product-img"
+              id="product-image"
             />
-            <p>NUevoxDsdsd</p>
+
+            <p id="price-discount"></p>
           </div>
         </div>
       </div>
