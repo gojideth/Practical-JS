@@ -55,6 +55,7 @@ function onClickButtonPriceDiscount() {
   let prices = {
     priceBefore: parseInt(inputPrice),
     priceDiscount: precioConDescuento,
+    discountValue: discountValue,
   };
 
   return prices;
@@ -65,19 +66,42 @@ function writePrices(prices) {
   const priceDiscount = prices.priceDiscount;
 
   if (!Number.isNaN(priceBefore) && !Number.isNaN(priceDiscount)) {
-    writeInP( priceBefore, "price-before");
-    writeInP(priceDiscount, "price-discount");
+    writeInParagraph( formatPrices(priceBefore), "price-before");
+    writeInParagraph(formatPrices(priceDiscount), "price-discount");
+    showTotalDiscount(prices.discountValue);
+    showTotalSaved(prices.priceDiscount,prices.priceBefore);
     setVisibleImg();
+
   } else {
     window.alert("Ups, debes llenar los campos");
   }
 }
 
-function writeInP(text, paragraphId) {
-  const auxP = document.getElementById(paragraphId);
+function writeInParagraph(text, paragraphId) {
+  const auxP = document.getElementById(paragraphId);  
   auxP.innerText = " " + text;
 }
 
 function setVisibleImg() {
   document.getElementById("product-image").style.visibility = "visible";
+}
+
+function showTotalDiscount(totalDiscount){
+  const totalDiscountSum = parseInt(totalDiscount);
+  writeInParagraph("Descuento total\n" + totalDiscountSum + "%","total-discount");
+    
+}
+
+function showTotalSaved(saved, initialPrice){
+  const savedMoney = parseInt(saved);
+  const originalPrice = parseInt(initialPrice);
+  const finalPrice =  formatPrices(originalPrice - savedMoney);
+  console.log("Saved money:" + savedMoney + "op:" + originalPrice + "f " + finalPrice)
+  writeInParagraph("Total ahorrado: " + finalPrice,"total-saved");
+}
+
+function formatPrices(priceToFormat){
+  let dollarUSLocale = Intl.NumberFormat('en-US');
+  return dollarUSLocale.format(priceToFormat) + "$";
+
 }

@@ -34,6 +34,7 @@
         place-items: center;
         width: 100%;
         height: 100vh;
+        box-sizing: border-box;
       }
       .header {
         text-align: center;
@@ -46,8 +47,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        width: auto;
-        height: 100%;
+        width: 424px;
+        height: 800px;
+        box-sizing: border-box;
 
         /* height: auto; */
       }
@@ -65,6 +67,7 @@
         display: flex;
         flex-direction: column;
         border: 2px solid black;
+        border-radius: 12px;
         width: 100%;
         box-sizing: border-box;
         height: 320px;
@@ -85,7 +88,7 @@
         align-self: center;
         justify-content: center;
         width: 60%;
-        height: 140px;
+        height: 155px;
         box-sizing: border-box;
         gap: 8px;
       }
@@ -146,15 +149,17 @@
         display: flex;
         flex-direction: column;
         width: 400px;
-        height: 300px;
+        height: 308px;
         align-items: center;
+        box-sizing: border-box;
+        border-radius: 12px;       
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
       }
 
       .price-before {
-        position: relative;
         display: grid;
-        grid-template-columns: 104px 1fr 104px;
-        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         width: 100%;
         height: 280px;
       }
@@ -171,24 +176,50 @@
       .price-before p {
         font-size: var(--lg);
         text-align: center;
-        height: auto;
-        margin: 0 0 16px 0;
-        /* width: 104px; */
+        height: 100px;
+        margin: 0;
+        width: 100px;
+        
       }
 
-      .price-before p:nth-child(1) {
-        color: gray;
-        align-self: center;
-        font-size: var(--lg);
+      .discount-total-container {
+        display: grid;
+        flex-direction: column;
+        grid-template-rows: 1fr 1fr;
+        /* justify-content: center;
+        gap: 24px; */
+        height: 100%;
+      }
+
+      .discount-total-container p {       
+        place-self: center;
+        text-align: center;
+        
+      }
+
+      .discount-total-container p:nth-child(2){
+        font-weight: bold;
+
+      }
+      #price-before {
         text-decoration: line-through;
-      }
-      .price-before p:nth-child(2){
-        color: tomato;
-        font-size: var(--lg);
-
+        color: rgb(161, 161, 161);
       }
 
-      
+      #price-discount{
+        color: rgb(105, 180, 54);
+      }
+
+      #total-saved{
+        color: rgb(126, 17, 59);
+        margin: 4px 0 0 0;
+      }
+
+      @media (max-width: 424px) {
+        .discount-container {
+          width: 400px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -230,17 +261,22 @@
         </div>
         <div class="product-card">
           <div class="price-before">
-            <!-- <div class="p-before">
-            </div> -->
-            <p id="price-before"></p>
+            <div class="discount-total-container">
+              <p></p>
+              <p id="price-before"></p>
+            </div>
+
             <img
               src="https://images.pexels.com/photos/9410230/pexels-photo-9410230.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
               alt="product-img"
               id="product-image"
             />
-
-            <p id="price-discount"></p>
+            <div class="discount-total-container">
+              <p id="total-discount"></p>
+              <p id="price-discount"></p>
+            </div>
           </div>
+          <p id="total-saved"></p>
         </div>
       </div>
     </div>
