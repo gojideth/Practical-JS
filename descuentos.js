@@ -66,19 +66,20 @@ function writePrices(prices) {
   const priceDiscount = prices.priceDiscount;
 
   if (!Number.isNaN(priceBefore) && !Number.isNaN(priceDiscount)) {
-    writeInParagraph( formatPrices(priceBefore), "price-before");
+    document.getElementById("product-card").style.visibility = "visible";
+
+    writeInParagraph(formatPrices(priceBefore), "price-before");
     writeInParagraph(formatPrices(priceDiscount), "price-discount");
     showTotalDiscount(prices.discountValue);
-    showTotalSaved(prices.priceDiscount,prices.priceBefore);
+    showTotalSaved(prices.priceDiscount, prices.priceBefore);
     setVisibleImg();
-
   } else {
     window.alert("Ups, debes llenar los campos");
   }
 }
 
 function writeInParagraph(text, paragraphId) {
-  const auxP = document.getElementById(paragraphId);  
+  const auxP = document.getElementById(paragraphId);
   auxP.innerText = " " + text;
 }
 
@@ -86,22 +87,25 @@ function setVisibleImg() {
   document.getElementById("product-image").style.visibility = "visible";
 }
 
-function showTotalDiscount(totalDiscount){
+function showTotalDiscount(totalDiscount) {
   const totalDiscountSum = parseInt(totalDiscount);
-  writeInParagraph("Descuento total\n" + totalDiscountSum + "%","total-discount");
-    
+  writeInParagraph(
+    "Descuento total\n" + totalDiscountSum + "%",
+    "total-discount"
+  );
 }
 
-function showTotalSaved(saved, initialPrice){
+function showTotalSaved(saved, initialPrice) {
   const savedMoney = parseInt(saved);
   const originalPrice = parseInt(initialPrice);
-  const finalPrice =  formatPrices(originalPrice - savedMoney);
-  console.log("Saved money:" + savedMoney + "op:" + originalPrice + "f " + finalPrice)
-  writeInParagraph("Total ahorrado: " + finalPrice,"total-saved");
+  const finalPrice = formatPrices(originalPrice - savedMoney);
+  console.log(
+    "Saved money:" + savedMoney + "op:" + originalPrice + "f " + finalPrice
+  );
+  writeInParagraph("Total ahorrado: " + finalPrice, "total-saved");
 }
 
-function formatPrices(priceToFormat){
-  let dollarUSLocale = Intl.NumberFormat('en-US');
+function formatPrices(priceToFormat) {
+  let dollarUSLocale = Intl.NumberFormat("en-US");
   return dollarUSLocale.format(priceToFormat) + "$";
-
 }
