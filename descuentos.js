@@ -98,10 +98,7 @@ function showTotalDiscount(totalDiscount) {
 function showTotalSaved(saved, initialPrice) {
   const savedMoney = parseInt(saved);
   const originalPrice = parseInt(initialPrice);
-  const finalPrice = formatPrices(originalPrice - savedMoney);
-  console.log(
-    "Saved money:" + savedMoney + "op:" + originalPrice + "f " + finalPrice
-  );
+  const finalPrice = formatPrices(originalPrice - savedMoney);  
   writeInParagraph("Total ahorrado: " + finalPrice, "total-saved");
 }
 
