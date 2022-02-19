@@ -7,6 +7,8 @@ function calcularMediaAritmetica(lista) {
   return promedioLista;
 }
 
+
+
 const lista1 = [100, 200, 500, 4000000];
 
 const mitadLista = parseInt(lista1.length / 2);
