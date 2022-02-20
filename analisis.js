@@ -12,11 +12,11 @@ function formatString(salaryString) {
 
 function getSalaries() {
   const salaryString = document.getElementById("Salaries").value;
-  
+  return salaryString;
 }
 
 function evaluateString(string){
-  if(string!== "" && string!== " "){
+  if(string!== "" && string!== " " && string != null){
     console.log(string);
     return true;
 
