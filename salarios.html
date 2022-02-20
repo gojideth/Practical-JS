@@ -162,7 +162,7 @@
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
           rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
           rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-        /* visibility: hidden; */
+        visibility: hidden;
         justify-content: space-evenly;
       }
 
@@ -198,6 +198,14 @@
 
       .medians .span-medians{
         text-align: center;
+      }
+
+      .span-medians
+      {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .span-medians h2 {
         font-size: var(--md);
@@ -245,11 +253,11 @@
           <div class="medians">
             <span class="span-medians">
               <h2>Mediana total</h2>
-              <p class="p-block" id="median-normal">Test1</p>
+              <p class="p-block" id="median-normal"></p>
             </span>
             <span class="span-medians">
               <h2>Mediana top 10%</h2>
-              <p class="p-block" id="median-top">Test 2</p>
+              <p class="p-block" id="median-top"></p>
             </span>
           </div>
         </div>

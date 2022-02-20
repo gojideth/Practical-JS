@@ -1,11 +1,29 @@
 function formatString(salaryString) {
+
   const salariesArray = salaryString.split("-");
-  return salariesArray;
+  
+  const condicion = (number)=> number!== "" && !Number.isNaN(number);
+
+  const arrayCleaned = salariesArray.filter(condicion);
+  
+
+  return arrayCleaned;
 }
 
 function getSalaries() {
   const salaryString = document.getElementById("Salaries").value;
-  return salaryString;
+  
+}
+
+function evaluateString(string){
+  if(string!== "" && string!== " "){
+    console.log(string);
+    return true;
+
+  }else{
+    
+    return false;
+  }
 }
 
 function formatArray() {
@@ -26,12 +44,15 @@ function calcularMediaAritmetica(lista) {
   return promedioLista;
 }
 function isOdd(number) {
-  return number % 2 === 0;
+  return number % 2 == 0;
 }
 
 function medianaSalarios(salarios) {
   const mitad = parseInt(salarios.length / 2);
-  if (isOdd(mitad)) {
+  if (salarios.length == 1) {
+    return salarios[0];
+  } else 
+  if (isOdd(salarios.length)) {
     const mediana = calcularMediaAritmetica([
       parseInt(salarios[mitad]),
       parseInt(salarios[mitad - 1]),
@@ -43,7 +64,30 @@ function medianaSalarios(salarios) {
   }
 }
 
+
+function tenMedian() {
+  const arraySalarios = formatString(getSalaries());
+
+  const sortedSalaries = sortArray(arraySalarios);
+
+  const spliceStart = (sortedSalaries.length * 90) / 100;
+  
+  const spliceCount = Math.ceil(sortedSalaries.length - spliceStart);
+  
+  const salaryTop10 = sortedSalaries.splice(spliceStart, spliceCount);
+  
+  const median10 = medianaSalarios(salaryTop10);
+  
+  
+  writeStringArray(median10, "median-top");
+}
+
+function writeStringArray(textToWrite, id) {
+  writeInParagraph(textToWrite, id);
+}
+
 function obtainAndShow() {
+
   const arraySalarios = formatString(getSalaries());
 
   const sortedSalaries = sortArray(arraySalarios);
@@ -51,51 +95,27 @@ function obtainAndShow() {
   const mediana = medianaSalarios(sortedSalaries);
 
   writeStringArray(mediana, "median-normal");
-
-  console.log(mediana);
-}
-
-function tenMedian(array){
-  const spliceStart = (array.length * 90) / 100;
-
-  const spliceCount = array.length - spliceStart;
-
-  const salaryTop10 = array.splice(spliceStart, spliceCount);
-
-  const median10 = medianaSalarios(salaryTop10);
-
-
-  writeStringArray(median10, "median-top");
-
-
-}
-
-function writeStringArray(textToWrite, id) {
-  writeInParagraph(textToWrite, id);
 }
 
 function executeShow() {
-  
   const arraySalarios = formatString(getSalaries());
-  
+
   const sortedSalaries = sortArray(arraySalarios);
-  
+
   const stringSalaries = sortedSalaries.toString();
-  
+
   const formattedString = stringSalaries.replace(/,/g, " , ");
 
   writeStringArray(formattedString, "array-string");
 
+  tenMedian(sortedSalaries);
 
   document.getElementById("product-card").style.visibility = "visible";
-
-
 }
-
 
 /**
  * *Mediana del top 10%
- * !Deprecated without parameters. 
+ * !Deprecated without parameters.
  */
 
 function top10Mediana() {
@@ -114,4 +134,14 @@ function top10Mediana() {
   const mediana10Col = medianaSalarios(salariosColTop10);
 
   console.log(medianaSalariosCol, mediana10Col);
+}
+
+
+function evaluateAndExecute(){
+  if(evaluateString(getSalaries())){
+    executeShow();
+    obtainAndShow();
+  }else{
+    window.alert("Escribe tus datos!");
+  }
 }
