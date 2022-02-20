@@ -10,7 +10,6 @@ function getSalaries() {
 
 function formatArray() {
   const formatedInArray = formatString(getSalaries());
-
   return formatedInArray;
 }
 
@@ -51,11 +50,52 @@ function obtainAndShow() {
 
   const mediana = medianaSalarios(sortedSalaries);
 
-  return mediana;
+  writeStringArray(mediana, "median-normal");
+
+  console.log(mediana);
 }
+
+function tenMedian(array){
+  const spliceStart = (array.length * 90) / 100;
+
+  const spliceCount = array.length - spliceStart;
+
+  const salaryTop10 = array.splice(spliceStart, spliceCount);
+
+  const median10 = medianaSalarios(salaryTop10);
+
+
+  writeStringArray(median10, "median-top");
+
+
+}
+
+function writeStringArray(textToWrite, id) {
+  writeInParagraph(textToWrite, id);
+}
+
+function executeShow() {
+  
+  const arraySalarios = formatString(getSalaries());
+  
+  const sortedSalaries = sortArray(arraySalarios);
+  
+  const stringSalaries = sortedSalaries.toString();
+  
+  const formattedString = stringSalaries.replace(/,/g, " , ");
+
+  writeStringArray(formattedString, "array-string");
+
+
+  document.getElementById("product-card").style.visibility = "visible";
+
+
+}
+
 
 /**
  * *Mediana del top 10%
+ * !Deprecated without parameters. 
  */
 
 function top10Mediana() {
@@ -74,26 +114,4 @@ function top10Mediana() {
   const mediana10Col = medianaSalarios(salariosColTop10);
 
   console.log(medianaSalariosCol, mediana10Col);
-}
-
-function writeMediana(numbers) {
-  const priceBefore = numbers.priceBefore;
-  const priceDiscount = numbers.priceDiscount;
-
-  if (!Number.isNaN(priceBefore) && !Number.isNaN(priceDiscount)) {
-    document.getElementById("product-card").style.visibility = "visible";
-
-    writeInParagraph(formatPrices(priceBefore), "price-before");
-    writeInParagraph(formatPrices(priceDiscount), "price-discount");
-    showTotalDiscount(numbers.discountValue);
-    showTotalSaved(numbers.priceDiscount, numbers.priceBefore);
-    setVisibleImg();
-  } else {
-    window.alert("Ups, debes llenar los campos");
-  }
-}
-
-
-function execute() {
-  writePrices(obtainAndShow());
 }
